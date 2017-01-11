@@ -1,0 +1,65 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="data.json"></script>
+<meta http-equiv="refresh" content="17"> 
+<script src="jquery-3.1.1.min.js"></script>
+<div id="container" style="min-width: 700px; height: 700px; max-width: 600px; margin: 0 auto"></div>
+
+<script>
+
+
+$(function () {
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Dictionary Comparision'
+        },
+		subtitle: {
+		    text: 'NRC-Hashtag-Emotion-Lexicon-v0 Vs NRC-Emotion-Lexicon ' 
+		},
+        xAxis: {
+            categories: [
+                'NRC-Hashtag-Emotion-Lexicon-v0.2',
+				'NRC-Emotion-Lexicon'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Tweet Count'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Positive',
+            data: [11077,9573],
+            color: '#008000' 
+        }, {
+            name: 'Negative',
+            data: [10218,8359],
+            color: '#FF0000'
+
+        }, {
+            name: 'Neutral',
+            data: [412,3775]
+
+        }]
+    });
+});
+</script>
